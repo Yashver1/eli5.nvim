@@ -1,3 +1,3 @@
-vim.keymap.set("n", "<Plug>eli5Call", function()
-	require("eli5").call()
+vim.keymap.set("n", "<Plug>eli5Test", function()
+	require("eli5").eli5()
 end)
