@@ -1,10 +1,10 @@
 local M = {}
 
 ---TODO decide on cursor pos or true middle (right now is just middle of current buffer)
----TODO allow wrap
 
 ---@param content string[]
 function M.render(content)
+  --- i should probably modularise this
   local buf_id = vim.api.nvim_create_buf(false, true)
 
   assert(buf_id, "Unable to generate buffer")
@@ -26,6 +26,8 @@ function M.render(content)
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   })
 
+  --- can turn into a func that takes in options as a table
+  vim.api.nvim_set_option_value("wrap", true, { win = win_id })
   vim.api.nvim_set_option_value("winhl", "FloatBorder:Normal", { win = win_id })
 
   assert(win_id, string.format("Unable to generate window on buffer: %d", buf_id))
