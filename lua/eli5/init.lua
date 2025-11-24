@@ -14,9 +14,10 @@ local M = {
     system_prompt = require("eli5.utils.system_prompt"),
   },
   is_setup = false,
+  debug = false,
 }
 
----@param config { env_path: string, model: string, endpoint: string, prompt: string?}
+---@param config { env_path: string, model: string, endpoint: string, debug: boolean, prompt: string?}
 function M.setup(config)
   local ok, result = pcall(utils.load_api_key, config.env_path)
   if not ok then
@@ -30,6 +31,10 @@ function M.setup(config)
     M.config.system_prompt = config.prompt
   end
   M.is_setup = true
+
+  if config.debug then
+    M.debug = true
+  end
 end
 
 function M.eli5()
@@ -37,6 +42,11 @@ function M.eli5()
 
   if not M.is_setup then
     vim.notify("eli5.nvim has not been provided with a config.", vim.log.levels.INFO)
+  end
+
+  if M.debug then
+    render_engine.render(table.concat(res, "\n"))
+    return
   end
 
   local ok, err = pcall(api.call_api, {
