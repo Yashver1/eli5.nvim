@@ -57,6 +57,7 @@ function M.call_api(payload, renderer)
     end
   end
 
+  vim.notify("explaining concept...", vim.log.levels.INFO)
   local ok, err = pcall(function()
     vim.system(args, { text = true }, exit_handler)
   end)
