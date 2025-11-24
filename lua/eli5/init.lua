@@ -45,7 +45,7 @@ function M.eli5()
   end
 
   if M.debug then
-    render_engine.render(table.concat(res, "\n"))
+    render_engine.render(res)
     return
   end
 

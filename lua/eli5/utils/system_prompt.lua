@@ -17,7 +17,7 @@ Cite (short quotes):
 	•	Each snippet ≤25 words, with Title, Source/Org, URL, Date.
 
 Output exactly this format (nothing else):
-	•	ELI5 (≤80 words): 
+	•	ELI5 (≤80 words)(Note: DO NOT show the ELI5(<=80 words) literally): 
 	•	Reference Snippets (2–4):
 	1.	“<quote ≤25 words>” — , <Source/Org>, , 
 	2.	“<quote ≤25 words>” — , <Source/Org>, , 
